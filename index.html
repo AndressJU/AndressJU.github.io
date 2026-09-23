@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrés | Portafolio - Desarrollador Multiplataforma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: rgba(18, 22, 34, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(56, 189, 248, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(129, 140, 248, 0.08) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1050px;
+      width: 100%;
+    }
+
+    /* GRID BENTO (6 Cajas) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .bento-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px var(--accent-glow);
+    }
+
+    /* Distribución de las tarjetas */
+    .hero-card {
+      grid-column: span 2;
+      justify-content: center;
+    }
+
+    .contact-card {
+      grid-column: span 1;
+    }
+
+    .tech-card {
+      grid-column: span 1;
+    }
+
+    .projects-card {
+      grid-column: span 2;
+    }
+
+    .education-card {
+      grid-column: span 1;
+    }
+
+    .github-card {
+      grid-column: span 2;
+    }
+
+    /* Elementos Internos */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      color: var(--success);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      width: fit-content;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.bio {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+    }
+
+    /* Badges de Tecnologías */
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+    }
+
+    .pill:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Proyectos */
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .project-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .project-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Enlaces y botones de contacto */
+    .links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-link:hover {
+      background: var(--text-main);
+      color: var(--bg);
+    }
+
+    .btn-link.copy-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* GitHub Stats Embed */
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .stats-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-card, .contact-card, .tech-card, 
+      .projects-card, .education-card, .github-card {
+        grid-column: span 1;
+      }
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="bento-grid">
+
+      <!-- 1. HERO / PRESENTACIÓN (Cuadro grande) -->
+      <div class="bento-card hero-card">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Disponible para prácticas & proyectos
+        </div>
+        <h1>Hola, soy <span class="gradient-text">Andrés</span></h1>
+        <p class="bio">
+          Estudiante de 2º de <b>DAM</b> enfocado en desarrollo de aplicaciones multiplataforma, 
+          especialmente en el ecosistema <b>Android nativo</b> (Kotlin) y arquitecturas backend sólidas (Java).
+        </p>
+      </div>
+
+      <!-- 2. CONTACTO & REDES (Cuadro 2) -->
+      <div class="bento-card contact-card">
+        <div class="card-title">📬 Conecta conmigo</div>
+        <div class="links-stack">
+          <a class="btn-link" href="https://linkedin.com/in/andres-jauregui-b47312303" target="_blank">
+            LinkedIn ↗
+          </a>
+          <a class="btn-link" href="https://github.com/AndressJU" target="_blank">
+            GitHub ↗
+          </a>
+          <button class="btn-link copy-btn" id="copyBtn" onclick="copyEmail()">
+            📋 Copiar Email
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. TECNOLOGÍAS (Cuadro 3) -->
+      <div class="bento-card tech-card">
+        <div class="card-title">⚡ Stack Técnico</div>
+        <div class="tech-pills">
+          <span class="pill">Kotlin</span>
+          <span class="pill">Java</span>
+          <span class="pill">Android</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">SQLite</span>
+          <span class="pill">Git / GitHub</span>
+          <span class="pill">HTML & CSS</span>
+        </div>
+      </div>
+
+      <!-- 4. PROYECTOS (Cuadro 4) -->
+      <div class="bento-card projects-card">
+        <div class="card-title">🚀 Proyectos Destacados</div>
+        <div class="project-list">
+          <a class="project-item" href="https://github.com/AndressJU" target="_blank">
+            <div>
+              <h4>Android App <span>↗</span></h4>
+              <p>Aplicación nativa desarrollada en Kotlin con arquitectura limpia y persistencia de datos local.</p>
+            </div>
+            <span class="pill" style="align-self: flex-start;">Kotlin · Android</span>
+          </a>
+          <a class="project-item" href="https://github.com/AndressJU" target="_blank">
+            <div>
+              <h4>Java Backend & SQL <span>↗</span></h4>
+              <p>Sistema de gestión con base de datos relacional y lógica de negocio orientada a objetos.</p>
+            </div>
+            <span class="pill" style="align-self: flex-start;">Java · MySQL</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. FORMACIÓN (Cuadro 5) -->
+      <div class="bento-card education-card">
+        <div class="card-title">🎓 Trayectoria</div>
+        <p style="font-weight: 600; margin-bottom: 4px;">2º Curso de DAM</p>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5;">
+          Desarrollo de Aplicaciones Multiplataforma. Orientado al desarrollo ágil, patrones de diseño y código mantenible.
+        </p>
+      </div>
+
+      <!-- 6. ACTIVIDAD GITHUB EN VIVO (Cuadro 6) -->
+      <div class="bento-card github-card">
+        <div class="card-title">📊 Estadísticas en Tiempo Real</div>
+        <div class="stats-container">
+          <img src="https://github-readme-stats.vercel.app/api?username=AndressJU&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Estadísticas GitHub de Andrés" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function copyEmail() {
+      const email = "andresjauregui802@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = "¡Copiado al portapapeles! ✓";
+        btn.style.borderColor = "var(--success)";
+        btn.style.color = "var(--success)";
+        setTimeout(() => {
+          btn.innerText = "📋 Copiar Email";
+          btn.style.borderColor = "";
+          btn.style.color = "";
+        }, 2500);
+      });
+    }
+  </script>
+
+</body>
+</html>
