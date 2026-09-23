@@ -46,7 +46,7 @@
       width: 100%;
     }
 
-    /* GRID BENTO (6 Cajas) */
+    /* GRID BENTO */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -91,6 +91,10 @@
     }
 
     .education-card {
+      grid-column: span 1;
+    }
+
+    .cv-card {
       grid-column: span 1;
     }
 
@@ -280,7 +284,7 @@
         grid-template-columns: 1fr;
       }
       .hero-card, .contact-card, .tech-card, 
-      .projects-card, .education-card, .github-card {
+      .projects-card, .education-card, .cv-card, .github-card {
         grid-column: span 1;
       }
       .project-list {
@@ -294,7 +298,7 @@
   <div class="container">
     <div class="bento-grid">
 
-      <!-- 1. HERO / PRESENTACIÓN (Cuadro grande) -->
+      <!-- 1. HERO / PRESENTACIÓN -->
       <div class="bento-card hero-card">
         <div class="status-badge">
           <span class="status-dot"></span>
@@ -307,7 +311,7 @@
         </p>
       </div>
 
-      <!-- 2. CONTACTO & REDES (Cuadro 2) -->
+      <!-- 2. CONTACTO & REDES -->
       <div class="bento-card contact-card">
         <div class="card-title">📬 Conecta conmigo</div>
         <div class="links-stack">
@@ -323,7 +327,7 @@
         </div>
       </div>
 
-      <!-- 3. TECNOLOGÍAS (Cuadro 3) -->
+      <!-- 3. TECNOLOGÍAS -->
       <div class="bento-card tech-card">
         <div class="card-title">⚡ Stack Técnico</div>
         <div class="tech-pills">
@@ -337,7 +341,7 @@
         </div>
       </div>
 
-      <!-- 4. PROYECTOS (Cuadro 4) -->
+      <!-- 4. PROYECTOS -->
       <div class="bento-card projects-card">
         <div class="card-title">🚀 Proyectos Destacados</div>
         <div class="project-list">
@@ -358,7 +362,7 @@
         </div>
       </div>
 
-      <!-- 5. FORMACIÓN (Cuadro 5) -->
+      <!-- 5. FORMACIÓN -->
       <div class="bento-card education-card">
         <div class="card-title">🎓 Trayectoria</div>
         <p style="font-weight: 600; margin-bottom: 4px;">2º Curso de DAM</p>
@@ -367,7 +371,25 @@
         </p>
       </div>
 
-      <!-- 6. ACTIVIDAD GITHUB EN VIVO (Cuadro 6) -->
+      <!-- 6. NUEVA TARJETA: CURRICULUM VITAE -->
+      <div class="bento-card cv-card">
+        <div class="card-title">📄 Currículum Vitae</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">
+          Consulta mi CV actualizado con mi experiencia académica y habilidades técnicas.
+        </p>
+        <div class="links-stack" style="gap: 8px;">
+          <!-- Opción A: Ver PDF en pestaña nueva -->
+          <a class="btn-link" href="cv.pdf" target="_blank">
+            👁️ Ver CV Online
+          </a>
+          <!-- Opción B: Descargar directo -->
+          <a class="btn-link" href="cv.pdf" download="Andres_Jauregui_CV.pdf" style="background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.3);">
+            📥 Descargar PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- 7. ACTIVIDAD GITHUB EN VIVO -->
       <div class="bento-card github-card">
         <div class="card-title">📊 Estadísticas en Tiempo Real</div>
         <div class="stats-container">
