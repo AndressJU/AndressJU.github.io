@@ -46,7 +46,7 @@
       width: 100%;
     }
 
-    /* GRID BENTO */
+    /* GRID BENTO (6 Cajas originales) */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -91,10 +91,6 @@
     }
 
     .education-card {
-      grid-column: span 1;
-    }
-
-    .cv-card {
       grid-column: span 1;
     }
 
@@ -150,6 +146,47 @@
       color: var(--text-muted);
       font-size: 1.05rem;
       line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Botones de CV integrados en el Hero */
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .btn-cv:hover {
+      background: var(--text-main);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    .btn-cv.download {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+    }
+
+    .btn-cv.download:hover {
+      background: var(--accent);
+      color: #000;
     }
 
     .card-title {
@@ -284,7 +321,7 @@
         grid-template-columns: 1fr;
       }
       .hero-card, .contact-card, .tech-card, 
-      .projects-card, .education-card, .cv-card, .github-card {
+      .projects-card, .education-card, .github-card {
         grid-column: span 1;
       }
       .project-list {
@@ -298,7 +335,7 @@
   <div class="container">
     <div class="bento-grid">
 
-      <!-- 1. HERO / PRESENTACIÓN -->
+      <!-- 1. HERO / PRESENTACIÓN CON BOTONES DE CV INTEGRADOS -->
       <div class="bento-card hero-card">
         <div class="status-badge">
           <span class="status-dot"></span>
@@ -309,6 +346,14 @@
           Estudiante de 2º de <b>DAM</b> enfocado en desarrollo de aplicaciones multiplataforma, 
           especialmente en el ecosistema <b>Android nativo</b> (Kotlin) y arquitecturas backend sólidas (Java).
         </p>
+        <div class="hero-actions">
+          <a class="btn-cv" href="cv.pdf" target="_blank">
+            👁️ Ver CV Online
+          </a>
+          <a class="btn-cv download" href="cv.pdf" download="Andres_Jauregui_CV.pdf">
+            📥 Descargar PDF
+          </a>
+        </div>
       </div>
 
       <!-- 2. CONTACTO & REDES -->
@@ -371,25 +416,7 @@
         </p>
       </div>
 
-      <!-- 6. NUEVA TARJETA: CURRICULUM VITAE -->
-      <div class="bento-card cv-card">
-        <div class="card-title">📄 Currículum Vitae</div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">
-          Consulta mi CV actualizado con mi experiencia académica y habilidades técnicas.
-        </p>
-        <div class="links-stack" style="gap: 8px;">
-          <!-- Opción A: Ver PDF en pestaña nueva -->
-          <a class="btn-link" href="cv.pdf" target="_blank">
-            👁️ Ver CV Online
-          </a>
-          <!-- Opción B: Descargar directo -->
-          <a class="btn-link" href="cv.pdf" download="Andres_Jauregui_CV.pdf" style="background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.3);">
-            📥 Descargar PDF
-          </a>
-        </div>
-      </div>
-
-      <!-- 7. ACTIVIDAD GITHUB EN VIVO -->
+      <!-- 6. ACTIVIDAD GITHUB EN VIVO -->
       <div class="bento-card github-card">
         <div class="card-title">📊 Estadísticas en Tiempo Real</div>
         <div class="stats-container">
